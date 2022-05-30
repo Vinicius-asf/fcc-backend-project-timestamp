@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const {getTimestamp} = require('./controllers/getTimestamp')
+const {getController} = require('./controllers/get')
 
 // middleware that is specific to this router
 router.use((req, res, next) => {
@@ -9,10 +9,6 @@ router.use((req, res, next) => {
   next()
 })
 
-router.get('/:date', (req, res) => {
-  console.log('Timestamp request')
-  const timestamp = getTimestamp();
-  res.json(timestamp);
-})
+router.get("/:date",getController)
 
 module.exports = router
