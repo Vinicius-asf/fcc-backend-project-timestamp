@@ -11,6 +11,4 @@ const getController = (req,res) => {
   }
 }
 
-
-
 module.exports = {getController}
