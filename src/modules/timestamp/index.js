@@ -11,4 +11,8 @@ router.use((req, res, next) => {
 
 router.get("/:date",getController)
 
+router.get("/",(req,res) => {
+  res.redirect(301,'/api/'+Date.now().toString())
+})
+
 module.exports = router

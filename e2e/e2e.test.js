@@ -36,13 +36,15 @@ describe('Endpoints', () => {
     expect(res.body).toHaveProperty("utc","Thu, 01 Jan 1970 04:00:00 GMT")
   })
 
-  it('receive valid date empty param', async () => {
+  it('receive valid date with empty param', async () => {
     const res = await request(app)
-      .get('/api')
+      .get('/api/')
+      .redirects(1)
     const testDate = new Date()
     expect(res.statusCode).toEqual(200)
-    expect(res.body).toHaveProperty("unix",testDate)
-    expect(res.body).toHaveProperty("utc",testDate.toString())
+    expect(res.body).toHaveProperty("unix")
+    expect((res.body.unix/10000).toFixed(0)).toBe((testDate.getTime()/10000).toFixed(0))
+    expect(res.body).toHaveProperty("utc")
   })
 
   it('receive error with wrong dateString format param', async () => {
