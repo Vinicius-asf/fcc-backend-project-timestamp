@@ -3,7 +3,7 @@ const createServer = require('../server')
 
 const app = createServer()
 
-describe('Post Endpoints', () => {
+describe('Endpoints', () => {
   it('receive valid date with dateString param', async () => {
     const res = await request(app)
       .get('/api/2015-12-25')
@@ -51,7 +51,7 @@ describe('Post Endpoints', () => {
     expect(res.statusCode).toEqual(400)
     expect(res.body).toHaveProperty("error","Invalid Date")
   })
-  
+
   it('receive error with wrong dateString format param - 2', async () => {
     const res = await request(app)
       .get('/api/abcd')
