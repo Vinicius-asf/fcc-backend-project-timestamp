@@ -2,11 +2,12 @@
 // where your node app starts
 
 // init project
-var express = require('express');
+require('dotenv').config()
 
 const createServer = require('./server');
 
 const app = createServer();
-app.listen(3000, () => {
-  console.log("Server is listening port 3000")
+
+const listener = app.listen(process.env.PORT, function () {
+  console.log('Your app is listening on port ' + listener.address().port)
 })
